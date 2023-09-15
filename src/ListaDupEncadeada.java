@@ -51,6 +51,23 @@ public class ListaDupEncadeada<T> {
 
     }
 
+    public void remove(int index) {
+        if(index == 0) {
+            primeiroNo = primeiroNo.getNoProximo();
+            if(primeiroNo != null) {
+                primeiroNo.setNoPrevio(null);
+            }
+        } else {
+            No<T> aux = getNo(index);
+            aux.getNoPrevio().setNoProximo(aux.getNoProximo());
+            if(aux != ultimoNo) {
+                aux.getNoProximo().setNoPrevio(aux.getNoPrevio());
+            } else {
+                ultimoNo = aux;
+            }
+        }
+        tamanhoLista--;
+    }
 
 
     private No<T> getNo(int index) {
