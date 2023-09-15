@@ -51,6 +51,18 @@ public class ListaDupEncadeada<T> {
 
     }
 
+    @Override
+    public String toString() {
+        String s = "";
+        No<T> aux = this.primeiroNo;
+        for(int i = 0; i<this.size(); i++) {
+            s += "[No { conteudo "+ aux.getConteudo() + "} ] -->";
+            aux = aux.getNoProximo();
+        }
+        s += "null";
+        return s;
+    }
+
     public void remove(int index) {
         if(index == 0) {
             primeiroNo = primeiroNo.getNoProximo();
